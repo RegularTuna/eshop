@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
+import java.util.Arrays;
 
 @RestController
 @RequestMapping("/api")
@@ -34,7 +35,10 @@ public class ProductController {
             @RequestParam(name = "sortBy", defaultValue = AppConstants.SORT_PRODUCTS_BY)String sortBy,
             @RequestParam(name = "sortOrder", defaultValue = AppConstants.SORT_DIR ) String sortOrder
     ){
+
+
         ProductResponse productResponse = productService.getAllProducts(pageNumber,pageSize,sortBy,sortOrder);
+
         return new ResponseEntity<>(productResponse, HttpStatus.OK);
     }
 
